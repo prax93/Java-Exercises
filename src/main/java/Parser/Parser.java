@@ -22,7 +22,6 @@ public class Parser {
         int counter = 0;
         int sum = 0;
 
-
         // Check for Empty input and throw Error
         if(input.isEmpty() || input.isBlank()){
             throw new IllegalArgumentException("Null Value");
@@ -34,7 +33,7 @@ public class Parser {
             counter++;
         }
 
-
+        // Check for char Value and Calculate Decimal Value
         for(int i = 0; i <= reversedCharArray.length -1; i++){
             char tmpChar = reversedCharArray[i];
             if(tmpChar == '1'){
