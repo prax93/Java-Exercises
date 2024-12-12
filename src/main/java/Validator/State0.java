@@ -16,9 +16,9 @@ public class State0 extends State {
         else if (this.getNumbersCharArray().contains(c)) {
             return new State1();
         }
-        else if(c == '.'){
+/*        else if(c == '.'){
             return new State2();
-        }
+        }*/
 
         throw new ValidationException("Error: State0");
     }
