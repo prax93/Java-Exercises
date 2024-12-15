@@ -13,13 +13,11 @@ public class Contacts {
 
         String filePath = args[0];
 
-        // Anzeigen der bestehenden Kontakte
         readContacts(filePath);
 
-        // Scanner für Benutzereingaben
         Scanner scanner = new Scanner(System.in);
 
-        // Eingabe eines neuen Kontakts
+
         System.out.println("\nMöchten Sie einen neuen Kontakt hinzufügen? (ja/nein)");
         String answer = scanner.nextLine();
 
@@ -31,15 +29,13 @@ public class Contacts {
             System.out.println("Geben Sie die E-Mail-Adresse ein:");
             String email = scanner.nextLine();
 
-            // Hinzufügen des neuen Kontakts zur Datei
             addContact(filePath, name, phone, email);
         }
 
-        // Schließen des Scanners
         scanner.close();
     }
 
-    // Methode zum Lesen der CSV-Datei und Anzeigen der Kontakte
+
     public static void readContacts(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -53,7 +49,7 @@ public class Contacts {
         }
     }
 
-    // Methode zum Hinzufügen eines neuen Kontakts zur CSV-Datei
+
     public static void addContact(String filePath, String name, String phone, String email) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) {
             bw.write(name + "," + phone + "," + email);

@@ -1,9 +1,8 @@
 package Streams;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Company {
 
@@ -26,6 +25,10 @@ public class Company {
 			new Employee("Joan", "Engineering", 59000)
 	);
 
+	static int[] numbers = {0,5,10,20,5,20};
+
+	static List<String> stringList = new ArrayList<>();
+
 	public static void main(String[] args) {
 		System.out.println("Minimum salary: " + minSalary());
 		System.out.println("Maximum salary: " + maxSalary());
@@ -39,6 +42,7 @@ public class Company {
 		System.out.println();
 		System.out.println("Number of employees per department: " + numEmployeesDepartment());
 		System.out.println("Average salary per department: " + avgSalaryDepartment());
+		System.out.println(countLetter('l'));
 	}
 
 	private static int minSalary() {
@@ -46,7 +50,7 @@ public class Company {
 	}
 
 	private static int maxSalary() {
-		return employees.stream().max(Comparator.comparing(Employee::salary)).get().salary();
+		return employees.stream().max(Comparator.comparing(Employee::salary)).orElse(new Employee("", "", 0)).salary();
 	}
 
 	private static double avgSalary() {
@@ -75,4 +79,31 @@ public class Company {
 	private static Map<String, Double> avgSalaryDepartment() {
 		return employees.stream().collect(Collectors.groupingBy(employee -> employee.department, Collectors.averagingDouble(Employee::salary)));
 	}
+
+	private static Double averAgeNumbers(){
+		return Arrays.stream(numbers).average().orElse(0);
+	}
+
+	private static List<String> lowerCaser(){
+		return employees.stream().map(employee -> employee.toString().toLowerCase()).toList();
+	}
+
+	private static int oddSums(){
+		return Arrays.stream(numbers)
+				.filter(n -> n%2 == 0)
+				.sum();
+	}
+
+
+	private static long countLetter(char search){
+		stringList.add("Hello");
+		stringList.add("World");
+
+
+		return stringList.stream().
+				flatMap(str -> str.chars().mapToObj(c -> (char)c)).filter(c -> c.equals(search)).count();
+
+
+	}
+
 }
