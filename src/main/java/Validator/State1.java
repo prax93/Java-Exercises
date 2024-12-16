@@ -6,16 +6,16 @@ public class State1 extends State{
 
 
     @Override
-    public State process(char c) throws ValidationException {
+    public State process(char c) {
 
-        if(this.getNumbersCharArray().contains(c) || c == '.'){
+        if(this.getNumbersCharArray().contains(c)){
             //this.setAccepting(true);
-            return new State2();
-        } else{
-            throw new ValidationException("Error: State1");
+            return new State1();
         }
-
-
+        else
+        {
+            return new State2();
+        }
 
     }
 

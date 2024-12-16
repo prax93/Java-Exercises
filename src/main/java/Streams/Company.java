@@ -66,6 +66,12 @@ public class Company {
 	}
 
 	private static Employee employeeHighestSalary() {
+
+		System.out.println(employees.stream()
+				.max(Comparator.comparing(Employee::salary)).orElseThrow()
+
+		);
+
 		return employees.stream()
 				.filter(employee -> employee.salary == maxSalary())
 				.findFirst().get();

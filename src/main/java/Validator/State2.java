@@ -11,7 +11,7 @@ public class State2 extends State{
             return new State3();
         }
         else if(this.getNumbersCharArray().contains(c)){
-            return new State3();
+            return new State1();
         }
         throw new ValidationException("Error: State2");
     }
